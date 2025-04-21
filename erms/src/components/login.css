@@ -1,0 +1,61 @@
+.login-container {
+  background: linear-gradient(to bottom, #c6ebfa, #495e75); /* Blue gradient */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 20px; /* Increase base font size */
+}
+
+.form-box {
+  background: linear-gradient(to top, #c6ebfa, #859aaf);
+  padding: 80px;
+  border-radius: 10px;
+  color: black;
+  width: 300px;
+  text-align: center;
+}
+.form-box h2 {
+  font-size: 20px; /* Increase base font size */
+  color: black; /* Ensure this rule is applied */
+  margin-bottom: 0px;
+}
+h2 {
+  color: black;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  color: black;
+}
+
+button {
+  background-color: black !important;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+p {
+  color:black;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+p a {
+  text-decoration: none;
+  color: black;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
