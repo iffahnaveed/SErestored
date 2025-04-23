@@ -308,6 +308,16 @@ async function getMessagesByApplicant(applicant_id) {
   );
   return result.rows;
 }
+// 🔽 place near the other “get” helpers
+async function getAllJobs() {
+  const result = await pool.query(
+    `SELECT jobid, job_title       -- adjust column names if different
+       FROM job
+       ORDER BY job_title ASC`
+  );
+  return result.rows;              // [{ job_id, job_title }, …]
+}
+
 
 module.exports = { 
   createUser, 
@@ -330,5 +340,6 @@ module.exports = {
     // Add the new message functions
     sendMessage,
     getMessagesByHR,
-    getMessagesByApplicant
+    getMessagesByApplicant,
+    getAllJobs
 };

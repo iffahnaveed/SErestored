@@ -46,3 +46,10 @@ export const getContracts = async () => {
   return response.json();
 };
 
+
+
+export const getJobs = async () => {
+  // jobs route lives outside /auth, so adjust path
+  const res = await fetch("http://localhost:5000/api/auth/jobs");
+  return res.json();               // { success, data: [...] }
+};

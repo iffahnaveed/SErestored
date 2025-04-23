@@ -22,7 +22,8 @@ const {
   getRecommendationsByHR,
   sendMessage,
   getMessagesByHR,
-  getMessagesByApplicant
+  getMessagesByApplicant,
+  getAllJobs
 } = require('../models/Users');
 
 const handleError = (res, error, defaultMessage = 'Server error') => {
@@ -458,5 +459,22 @@ router.get('/messages/applicant/:id', async (req, res) => {
     handleError(res, error, 'Failed to fetch applicant messages');
   }
 });
+
+// ==================== JOB ROUTES ====================
+
+/**
+ * @route GET /jobs
+ * @desc Return all job_id + job_title pairs for the contract dropdown
+ * @access Private (or Public, depending on your auth middleware)
+ */
+router.get('/jobs', async (_req, res) => {
+  try {
+    const jobs = await getAllJobs();
+    res.json({ success: true, data: jobs });
+  } catch (error) {
+    handleError(res, error, 'Failed to fetch jobs list');
+  }
+});
+
 
 module.exports = router;
