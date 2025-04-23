@@ -35,6 +35,7 @@ function AddQualification() {
           type,
           subject,
          yearGraduated,  // use this name if backend expects it
+         applicant_id: parseInt(applicant_id)
         }),
       });
   

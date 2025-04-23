@@ -11,7 +11,7 @@ function ApplicantFeatures() {
         <h2>Applicant Features</h2>
         <button onClick={() => navigate('/jobs')}>🔍 View & Apply for Available Jobs</button>
         <button onClick={() => navigate('/viewportfolio')}>📂 View Portfolio</button>
-        <button onClick={() => navigate('/application-status')}>📊 View Application Status</button>
+        <button onClick={() => navigate('/viewstatus')}>📊 View Application Status</button>
         <button onClick={() => navigate('/recievemsghr')}>📨 Receive Messages from HR</button>
         <button onClick={() => navigate('/sendmsghr')}>✉️ Send Message to HR</button>
         <button onClick={() => navigate('/recievemsgrec')}>📨 Receive Messages from Recruiter</button>

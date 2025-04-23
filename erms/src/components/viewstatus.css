@@ -1,0 +1,22 @@
+.form-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 16px;
+    background: #f9f9f9;
+    border-radius: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  select, input, textarea, button {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+  }
+  

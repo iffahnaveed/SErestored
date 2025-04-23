@@ -11,6 +11,7 @@ import RecvHr from './components/recievemsghr';
 import SendRec from './components/sendmsgrecruiter';
 import RecvRec from './components/recievemsgrec';
 import ViewApp from './components/viewappoitment';
+import ViewStat from './components/viewstatus';
 function App() {
   return (
     <Router>
@@ -27,6 +28,7 @@ function App() {
         <Route path="/sendmsgrecruiter"  element={<SendRec/>} />
         <Route path="/recievemsgrec"  element={<RecvRec/>} />
         <Route path="/viewappoitment"  element={<ViewApp/>} />
+        <Route path="/viewstatus"  element={<ViewStat/>} />
       </Routes>
     </Router>
   );
