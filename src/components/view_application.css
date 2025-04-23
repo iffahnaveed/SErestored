@@ -1,0 +1,88 @@
+.recruiter-jobs-container {
+    background: linear-gradient(to bottom, #c6ebfa, #495e75);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    font-family: sans-serif;
+    color: #000;
+  }
+  
+  .recruiter-jobs-container h2,
+  .recruiter-jobs-container h3 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #000;
+  }
+  
+  .job-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .job-list li {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 18px 25px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .job-list li:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .view-applications {
+    color: #007bff;
+    font-size: 0.95em;
+    font-style: italic;
+  }
+  
+  .applications-section {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 1000px;
+  }
+  
+  .application-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .application-table th,
+  .application-table td {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    text-align: center;
+    color: black;
+    background: rgba(255, 255, 255, 0.4);
+  }
+  
+  .application-table th {
+    background: rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+  }
+  
+  .error {
+    color: red;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  

@@ -1,0 +1,50 @@
+.job-container {
+    background: linear-gradient(to bottom, #c6ebfa, #495e75);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .job-form {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 15px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #000;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  }
+  
+  .job-form h2 {
+    text-align: center;
+    color: #000;
+  }
+  
+  .job-form input,
+  .job-form textarea,
+  .job-form select {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+    font-size: 16px;
+  }
+  
+  .job-form button {
+    padding: 12px;
+    background: linear-gradient(to right, #000000, #434343);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .job-form button:hover {
+    background: linear-gradient(to right, #434343, #000000);
+  }
+  
