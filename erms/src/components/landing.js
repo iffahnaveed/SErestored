@@ -25,7 +25,7 @@ function LandingPage() {
      
         <h3>Quick Links</h3>
         <Link to="/">Recruiter</Link>
-        <Link to="/signup">Applicant</Link>
+        <Link to="/login">Applicant</Link>
         <Link to="/">HR</Link>
         <Link to="/">Admin</Link>
         <Link to="/login">Login</Link>
@@ -36,7 +36,7 @@ function LandingPage() {
         <h1>Welcome to Employee Recruitment Management System</h1>
         <div className="options">
           <Link to="/" className="option recruiter">Recruiter</Link>
-          <Link to="/signup" className="option applicant">Applicant</Link>
+          <Link to="/login" className="option applicant">Applicant</Link>
           <Link to="/" className="option hr">HR</Link>
           <Link to="/" className="option admin">Admin</Link>
         </div>

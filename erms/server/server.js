@@ -43,7 +43,7 @@ const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg'); // PostgreSQL connection
 const authRoutes = require('./routes/auth');
-const { v4: uuidv4 } = require('uuid');
+//const { v4: uuidv4 } = require('uuid');
 
 require('dotenv').config();
 
@@ -93,11 +93,15 @@ app.get('/api/jobs', async (req, res) => {
 //     res.status(500).json({ message: "Server error" });
 //   }
 // });
+
+
 app.post('/api/jobs/apply', async (req, res) => {
   const { user_id, job_id } = req.body;
 
   try {
     // Check if user has already applied to this job
+    console.log("Applying with:", user_id, job_id);
+
     const existing = await pool.query(
       'SELECT * FROM application WHERE applicant_id = $1 AND job_id = $2',
       [user_id, job_id]
@@ -156,13 +160,13 @@ app.post('/api/jobs/apply', async (req, res) => {
     }
 
     // Insert into application table
-    const applicationId = uuidv4();
+    
     const applicationDate = new Date();
 
     await pool.query(
-      `INSERT INTO application (application_id, applicant_id, job_id, qualification_id, experience, gpa, application_date)
-       VALUES ($1, $2, $3, $4, $5, $6, $7)`,
-      [applicationId, user_id, job_id, qualification_id, userExperience, cgpa, applicationDate]
+      `INSERT INTO application ( applicant_id, job_id, qualification_id, experience, gpa, application_date)
+       VALUES ($1, $2, $3, $4, $5, $6)`,
+      [ user_id, job_id, qualification_id, userExperience, cgpa, applicationDate]
     );
 
     res.json({ message: "Job application submitted successfully!" });
@@ -171,6 +175,75 @@ app.post('/api/jobs/apply', async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+
+// POST /api/apply
+// app.post('/apply', async (req, res) => {
+//   const { applicant_id, job_id } = req.body;
+
+//   try {
+//     // 1. Get job requirements
+//     const jobQuery = `
+//       SELECT job_expereince, cgpa_required 
+//       FROM job 
+//       WHERE jobid = $1
+//     `;
+//     const jobRes = await pool.query(jobQuery, [job_id]);
+//     const job = jobRes.rows[0];
+
+//     if (!job) {
+//       return res.status(404).json({ error: 'Job not found' });
+//     }
+
+//     // 2. Get applicant's latest qualification and experience
+//     const qualQuery = `
+//       SELECT q.qual_id, q.cgpa 
+//       FROM qualification q
+//       JOIN qualification_applicant qa ON q.qual_id = qa.quali_id
+//       WHERE qa.applicant_id = $1
+//       ORDER BY q.year_completed DESC
+//       LIMIT 1
+//     `;
+//     const qualRes = await pool.query(qualQuery, [applicant_id]);
+//     const qualification = qualRes.rows[0];
+
+//     if (!qualification) {
+//       return res.status(404).json({ error: 'Applicant qualification not found' });
+//     }
+
+//     const expQuery = `SELECT experience FROM applicant WHERE applicant_id = $1`;
+//     const expRes = await pool.query(expQuery, [applicant_id]);
+//     const experience = expRes.rows[0]?.experience || 0;
+
+//     // 3. Check CGPA & experience
+//     if (
+//       parseFloat(qualification.cgpa) >= parseFloat(job.cgpa_required) &&
+//       parseInt(experience) >= parseInt(job.job_expereince)
+//     ) {
+//       // 4. Insert into application table
+//       const insertQuery = `
+//         INSERT INTO application (applicant_id, job_id, qualification_id, experience, gpa, application_date)
+//         VALUES ($1, $2, $3, $4, $5, CURRENT_DATE)
+//         RETURNING *
+//       `;
+//       const insertRes = await pool.query(insertQuery, [
+//         applicant_id,
+//         job_id,
+//         qualification.qual_id,
+//         experience,
+//         qualification.cgpa,
+//       ]);
+
+//       return res.status(201).json({ success: true, message: 'Application submitted!', data: insertRes.rows[0] });
+//     } else {
+//       return res.status(400).json({
+//         error: 'You do not meet the CGPA or experience requirements for this job.',
+//       });
+//     }
+//   } catch (err) {
+//     console.error('Error applying for job:', err);
+//     return res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
 
 app.get('/api/user/:email', async (req, res) => {
   const { email } = req.params;
@@ -185,33 +258,81 @@ app.get('/api/user/:email', async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-app.post('/api/qualification', async (req, res) => {
-  const { cgpa, school, type, subject, yearGraduated } = req.body;
+// app.post('/api/qualification', async (req, res) => {
+//   const { cgpa, school, type, subject, yearGraduated } = req.body;
   
+//   console.log("Received qualification:", {
+//     cgpa,
+//     school,
+//     type,
+//     subject,
+//     yearGraduated
+//   });
+
+//   try {
+//     const graduationDate = `${yearGraduated}-01-01`; // convert to full date string
+//     console.log("Inserting with values:", [cgpa, school, type, subject, graduationDate]);
+
+//     await pool.query(
+//       `INSERT INTO qualification (qual_type, university_school_name, year_completed, cgpa, field)
+//        VALUES ($1, $2, $3, $4, $5)`,
+//       [type, school, graduationDate, cgpa, subject] // Make sure values are in the correct order
+//     );
+    
+//     res.status(201).json({ message: "Qualification added successfully." });
+//   } catch (error) {
+//     console.error("Error inserting qualification:", error); // log detailed error
+//     res.status(500).json({ message: "Server error." });
+//   }
+// });
+// POST /api/qualifications
+app.post('/api/qualification', async (req, res) => {
+  const {
+    cgpa,
+    school,
+    type,
+    subject,
+    yearGraduated,
+    applicant_id // Make sure this is sent from the frontend
+  } = req.body;
+
   console.log("Received qualification:", {
     cgpa,
     school,
     type,
     subject,
-    yearGraduated
+    yearGraduated,
+    applicant_id
   });
 
   try {
     const graduationDate = `${yearGraduated}-01-01`; // convert to full date string
-    console.log("Inserting with values:", [cgpa, school, type, subject, graduationDate]);
+    console.log("Inserting with values:", [cgpa, school, type, subject, yearGraduated]);
 
-    await pool.query(
+    // Insert into qualification table and return the qual_id
+    const result = await pool.query(
       `INSERT INTO qualification (qual_type, university_school_name, year_completed, cgpa, field)
-       VALUES ($1, $2, $3, $4, $5)`,
-      [type, school, graduationDate, cgpa, subject] // Make sure values are in the correct order
+       VALUES ($1, $2, $3, $4, $5) RETURNING qual_id`,
+      [type, school, graduationDate, cgpa, subject]
     );
-    
-    res.status(201).json({ message: "Qualification added successfully." });
+
+    const qual_id = result.rows[0].qual_id;
+
+    // Now insert into qualification_applicant
+    await pool.query(
+      `INSERT INTO qualification_applicant (applicant_id, quali_id)
+       VALUES ($1, $2)`,
+      [applicant_id, qual_id]
+    );
+
+    res.status(201).json({ message: "Qualification and link added successfully." });
+
   } catch (error) {
-    console.error("Error inserting qualification:", error); // log detailed error
+    console.error("Error inserting qualification or linking applicant:", error);
     res.status(500).json({ message: "Server error." });
   }
 });
+
 
 // GET all HRs
 app.get('/api/hr', async (req, res) => {
@@ -321,5 +442,63 @@ app.get('/api/appointments', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch appointments' });
   }
 });
+//view status 
+app.get("/api/applications/:applicantId", async (req, res) => {
+  const { applicantId } = req.params;
+  try {
+    const result = await pool.query(`
+      SELECT a.application_id
+      FROM application a
+      JOIN applicant ap ON a.applicant_id = ap.applicant_id
+      WHERE ap.applicant_id = $1
+    `, [applicantId]);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+});
+
+app.get("/api/jobid/:applicationId", async (req, res) => {
+  const { applicationId } = req.params;
+  try {
+    const result = await pool.query(
+      "SELECT job_id FROM application WHERE application_id = $1",
+      [applicationId]
+    );
+    if (result.rows.length > 0) {
+      res.json({ jobId: result.rows[0].job_id });
+    } else {
+      res.status(404).json({ message: "Job ID not found" });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+});
+
+app.get("/api/jobstatus/:jobId", async (req, res) => {
+  const { jobId } = req.params;
+  try {
+    const result = await pool.query(
+      "SELECT job_status FROM job WHERE jobid = $1",
+      [jobId]
+    );
+
+    const status = result.rows.length > 0 ? result.rows[0].job_status : -1;
+
+    let message;
+    if (status === -1) message = "No status found for the job.";
+    else if (status === 0) message = "Pending";
+    else if (status === 1) message = "Congratulations, you got the job!";
+    else message = "Unknown status for the job.";
+
+    res.json({ message });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
