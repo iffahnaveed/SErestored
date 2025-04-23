@@ -17,7 +17,7 @@ function ApplicantFeatures() {
         <button onClick={() => navigate('/recievemsgrec')}>📨 Receive Messages from Recruiter</button>
         <button onClick={() => navigate('/sendmsgrecruiter')}>✉️ Send Message to Recruiter</button>
         <button onClick={() => navigate('/viewappoitment')}>📅 View Appointments</button>
-        <button onClick={() => navigate('/viewcontracts')}>📄 View Contracts</button>
+        <button onClick={() => navigate('/viewcontract')}>📄 View Contracts</button>
          <button onClick={() => navigate('/insertqualification')}>🎓 Insert Qualifications</button>
       </div>
       </div>

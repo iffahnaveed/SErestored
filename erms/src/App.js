@@ -12,6 +12,7 @@ import SendRec from './components/sendmsgrecruiter';
 import RecvRec from './components/recievemsgrec';
 import ViewApp from './components/viewappoitment';
 import ViewStat from './components/viewstatus';
+import ViewCont from './components/viewcontract';
 function App() {
   return (
     <Router>
@@ -29,6 +30,7 @@ function App() {
         <Route path="/recievemsgrec"  element={<RecvRec/>} />
         <Route path="/viewappoitment"  element={<ViewApp/>} />
         <Route path="/viewstatus"  element={<ViewStat/>} />
+        <Route path="/viewcontract"  element={<ViewCont/>} />
       </Routes>
     </Router>
   );

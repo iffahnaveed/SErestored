@@ -499,6 +499,27 @@ app.get("/api/jobstatus/:jobId", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
+//contracts
+app.get("/api/contract/:jobId", async (req, res) => {
+  const { jobId } = req.params;
+  try {
+    const result = await pool.query(`
+      SELECT contract_id, hr_id, salary, probation_period,  contract_start_date, 
+              contract_end_date, benefits
+      FROM hr_contract
+      WHERE job_id = $1
+    `, [jobId]);
+
+    if (result.rows.length > 0) {
+      res.json(result.rows[0]);
+    } else {
+      res.status(404).json({ message: "Contract not found for this job ID" });
+    }
+  } catch (err) {
+    console.error("Error fetching contract:", err);
+    res.status(500).send("Server error");
+  }
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
