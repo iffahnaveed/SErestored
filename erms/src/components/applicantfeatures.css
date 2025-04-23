@@ -1,0 +1,111 @@
+.applicant-container {
+    background: linear-gradient(to bottom, #c6ebfa, #495e75); /* Blue gradient */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+    
+    font-size: 20px; /* Increased base font size */
+  }
+  
+  h2 {
+    color: #8b4513;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  button {
+    background-color: #8b4513;
+    color: white;
+    padding: 12px 20px;
+    margin: 12px 0;
+    width: 280px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  button:hover {
+    background-color: #6b4226;
+    transform: scale(1.05);
+  }
+  
+  button i {
+    margin-right: 10px;
+    font-size: 18px;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .applicant-container {
+    background: linear-gradient(to bottom right, #dbeafe, #93c5fd);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+  
+  .feature-box {
+    background: white;
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+  }
+  
+  .feature-box h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #1e3a8a;
+  }
+  
+  .feature-box button {
+    display: block;
+    width: 100%;
+    margin: 12px 0;
+    padding: 14px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 12px;
+    background-color: #1e3a8a;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-box button:hover {
+    background-color: #3b82f6;
+    transform: scale(1.02);
+  }
+  .feature-scroll {
+    max-height: 400px;
+    overflow-y: auto;
+    width: 100%;
+  }
+  .feature-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .feature-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(139, 69, 19, 0.5);
+    border-radius: 10px;
+  }
+  

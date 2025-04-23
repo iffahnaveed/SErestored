@@ -1,0 +1,162 @@
+.contract-page-container {
+  max-width: 800px; /* Further reduced max-width */
+  margin: 15px auto; /* Reduced margin */
+  padding: 8px; /* Further reduced padding */
+  font-family: sans-serif;
+  background: linear-gradient(to top, #c6ebfa, #859aaf); /* Maintain background consistency */
+  min-height: 90vh; /* Further reduced minimum height */
+  font-size: 14px; /* Smaller font size */
+  border-radius: 8px; /* Slightly smaller border radius */
+}
+
+.contract-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px; /* Further reduced margin */
+}
+
+.contract-header h2 {
+  font-size: 14px; /* Smaller font size */
+  flex: 1;
+  text-align: center;
+  margin: 0;
+  color: black;
+}
+
+.contract-back-button {
+  padding: 4px 10px; /* Reduced padding */
+  font-size: 14px; /* Smaller font size */
+  background-color: #6c8fb4;
+  color: white;
+  border: none;
+  border-radius: 4px; /* Smaller border radius */
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.contract-back-button:hover {
+  background-color: #7d94ad;
+}
+
+.success-message {
+  padding: 5px; /* Further reduced padding */
+  margin-bottom: 8px; /* Reduced margin */
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-radius: 4px; /* Smaller border radius */
+  font-size: 14px; /* Smaller font size */
+  text-align: center;
+}
+
+.contract-content-wrapper {
+  display: flex;
+  gap: 8px; /* Reduced gap */
+  flex-wrap: wrap;
+}
+
+.contract-form-section,
+.contract-display-section {
+  flex: 1;
+  min-width: 220px; /* Reduced minimum width */
+}
+
+.contract-form,
+.contract-display-area {
+  background-color: #ffffff;
+  padding: 8px; /* Reduced padding */
+  border-radius: 8px; /* Smaller border radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 6px; /* Reduced margin */
+}
+
+.form-group label {
+  font-size: 11px; /* Smaller font size */
+  margin-bottom: 5px;
+  display: block;
+  color: #34495e;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 5px; /* Reduced padding */
+  font-size: 14px; /* Smaller font size */
+  border: 1px solid #ced4da;
+  border-radius: 4px; /* Smaller border radius */
+  background-color: #f9fbfd;
+}
+
+.form-group textarea {
+  min-height: 30px; /* Reduced height */
+}
+
+.contract-submit-button {
+  width: 100%;
+  padding: 5px; /* Reduced padding */
+  font-size: 11px; /* Smaller font size */
+  background-color: #6c8fb4;
+  color: white;
+  border: none;
+  border-radius: 4px; /* Smaller border radius */
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.contract-submit-button:hover {
+  background-color: #7d94ad;
+}
+
+.contract-submit-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.contract-display-area h3 {
+  font-size: 12px; /* Smaller font size */
+  margin-top: 0;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 6px;
+  color: black;
+}
+
+.contract-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Reduced gap */
+}
+
+.detail-item {
+  display: flex;
+  font-size: 10px; /* Smaller font size */
+}
+
+.detail-label {
+  font-weight: bold;
+  min-width: 100px; /* Adjusted width */
+  color: #34495e;
+}
+
+.detail-value {
+  color: #2c3e50;
+}
+
+.no-contract {
+  text-align: center;
+  color: #888;
+  font-size: 10px; /* Smaller font size */
+  padding: 6px 0;
+}
+
+@media (max-width: 768px) {
+  .contract-content-wrapper {
+    flex-direction: column;
+  }
+
+  .contract-header h2 {
+    font-size: 13px; /* Adjusted for smaller screens */
+  }
+}
