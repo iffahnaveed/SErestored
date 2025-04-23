@@ -1,0 +1,64 @@
+/* login.css */
+.login-container {
+  background: linear-gradient(to bottom, #c6ebfa, #495e75); /* Blue gradient */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: black;
+}
+
+.login-container .form-box {
+  background: linear-gradient(to top, #c6ebfa, #859aaf);
+  padding: 80px;
+  border-radius: 10px;
+  color: black;
+  width: 300px;
+  text-align: center;
+}
+
+.login-container .form-box h2 {
+  font-size: 20px;
+  color: black;
+  margin-bottom: 0px;
+}
+
+.login-container h2 {
+  color: black;
+  margin-bottom: 20px;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  color: black;
+}
+
+.login-container button {
+  background-color: #7d94ad;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.login-container p {
+  color: black;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.login-container p a {
+  text-decoration: none;
+  color: black;
+}
+
+.login-container p a:hover {
+  text-decoration: underline;
+}

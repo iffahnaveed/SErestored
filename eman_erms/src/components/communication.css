@@ -1,0 +1,48 @@
+.communication-container {
+  max-width: 600px;
+  margin: 50px auto; /* Center the container and add top/bottom margin */
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to top, #c6ebfa, #859aaf); /* Add background gradient to maintain the theme */
+  border-radius: 10px;
+}
+
+.communication-container h2 {
+  text-align: center;
+  color: black;
+}
+
+.communication-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.communication-container label {
+  font-weight: bold;
+  color: black;
+}
+
+select, textarea {
+  padding: 10px;
+  border: 1px solid black;
+  color: black;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.send-button, .back-button {
+  background-color: #73aac0; /* Use the same color as other buttons */
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.send-button:hover, .back-button:hover {
+  background-color: #7d94ad; /* Slightly darken the button color on hover */
+}

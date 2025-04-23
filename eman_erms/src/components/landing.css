@@ -1,0 +1,74 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #c6ebfa, #495e75); /* Blue gradient */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the body takes up the full viewport height */
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.container {
+  text-align: center;
+  padding: 50px 20px;
+  flex: 1; /* Allow the container to grow and take up remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+}
+
+h1 {
+  color: #000; /* Black text for the heading */
+  margin-bottom: 40px;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow buttons to wrap if they don't fit in one line */
+}
+
+.option {
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  color: #000; /* Black text for buttons */
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+
+.option.recruiter {
+  background-color: #87add6/* Light blue for applicant */
+}
+
+.option.applicant {
+  background-color: #87add6/* Light blue for applicant */
+}
+
+.option.hr {
+  background-color : #87add6/* Light blue for applicant */
+}
+
+.option.admin {
+  background-color:  #87add6/* Light blue for applicant */
+  
+}
+
+.image-container {
+  text-align: center; /* Center the image horizontally */
+  margin-top: 20px; /* Add some space between the options and the image */
+  flex-shrink: 0; /* Prevent the image container from shrinking */
+}
+
+.image-container img {
+  max-width: 200%; /* Ensure the image is responsive */
+  max-height: 400px; /* Limit the height of the image */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Optional: Add rounded corners to the image */
+}
