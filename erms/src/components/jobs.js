@@ -151,6 +151,11 @@ function Jobs() {
       setError("You do not meet the experience requirement for this job.");
       return;
     }
+    
+  if (user.cgpa < job.required_cgpa) {
+    setError("Your CGPA does not meet the minimum requirement for this job.");
+    return;
+  }
 
     try {
       const response = await fetch('http://localhost:5000/api/jobs/apply', {

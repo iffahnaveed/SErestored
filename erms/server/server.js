@@ -142,7 +142,7 @@ app.post('/api/jobs/apply', async (req, res) => {
       return res.status(404).json({ message: "Job not found" });
     }
 
-    const { job_experience, required_cgpa, application_deadline } = jobResult.rows[0];
+    const { job_experience, cgpa_required, application_deadline } = jobResult.rows[0];
     const deadline = new Date(application_deadline);
     const now = new Date();
 
@@ -151,7 +151,7 @@ app.post('/api/jobs/apply', async (req, res) => {
       return res.status(400).json({ message: "Your experience does not meet the requirement." });
     }
 
-    if (cgpa < required_cgpa) {
+    if (cgpa < cgpa_required) {
       return res.status(400).json({ message: "Your CGPA is lower than the required threshold." });
     }
 
