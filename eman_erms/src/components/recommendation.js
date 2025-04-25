@@ -6,6 +6,10 @@ import "./recommendation.css";
 function RecommendationPage() {
   const navigate = useNavigate();
 
+  // Get HR ID from storage with fallback to 1
+  const storedHrId = localStorage.getItem('hr_id') || sessionStorage.getItem('hr_id') || 1;
+  const [defaultHrId] = useState(parseInt(storedHrId));
+
   // State for dropdown options
   const [applicants, setApplicants] = useState([]);
   const [hrs, setHrs] = useState([]);
@@ -14,7 +18,7 @@ function RecommendationPage() {
 
   // State for selected values
   const [selectedApplicant, setSelectedApplicant] = useState("");
-  const [selectedHR, setSelectedHR] = useState("");
+  const [selectedHR, setSelectedHR] = useState(defaultHrId.toString());
   const [selectedRecommendation, setSelectedRecommendation] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);

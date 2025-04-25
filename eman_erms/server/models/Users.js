@@ -1,4 +1,6 @@
 const pool = require('../config/db');
+
+
 // User functions
 async function createUser(username, email, password, age, gender, quali_id, experience) {
   const result = await pool.query(
@@ -12,6 +14,11 @@ async function createUser(username, email, password, age, gender, quali_id, expe
 async function findUserByEmail(email) {
   const result = await pool.query('SELECT * FROM hr WHERE hr_email = $1', [email]);
   return result.rows[0];
+}
+
+async function findAdminByEmail(email) {
+  const result = await pool.query('SELECT * FROM admin WHERE email = $1', [email]);
+  return result.rows[0]; // return a single admin object (or undefined if not found)
 }
 
 
@@ -341,5 +348,6 @@ module.exports = {
     sendMessage,
     getMessagesByHR,
     getMessagesByApplicant,
-    getAllJobs
+    getAllJobs,
+    findAdminByEmail
 };

@@ -12,7 +12,7 @@ function LandingPage() {
         <button className="option recruiter">Recruiter</button>
         <Link to="/signup" className="option applicant">Applicant</Link>
         <Link to="/login" className="option hr">HR</Link>
-        <Link to="/adminmenu" className="option admin">Admin</Link>
+        <Link to="/loginadmin" className="option admin">Admin</Link>
       </div>
       <div className="image-container">
       
