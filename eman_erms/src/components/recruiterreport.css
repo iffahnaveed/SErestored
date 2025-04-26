@@ -1,35 +1,35 @@
 /* Container styling */
 .recruiter-report-container {
-  max-width: 650px; /* Reduced max-width for consistency */
-  margin: 20px auto; /* Reduced margin for compactness */
-  padding: 15px; /* Reduced padding */
-  background: linear-gradient(to top, #c6ebfa, #859aaf); /* Consistent background */
-  border-radius: 8px; /* Reduced border-radius */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly more consistent shadow */
+  max-width: 800px; /* Increased to match applicant report */
+  margin: 30px auto; /* Increased to match applicant report */
+  padding: 25px; /* Increased to match applicant report */
+  background: linear-gradient(to top, #c6ebfa, #859aaf); /* Same background */
+  border-radius: 12px; /* Increased to match applicant report */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Increased to match applicant report */
   text-align: center;
-  color: black; /* Consistent text color */
-  font-family: Arial, sans-serif; /* Ensures same font as other pages */
+  color: black;
+  font-family: Arial, sans-serif;
 }
 
 /* Heading */
 .recruiter-report-container h2 {
   color: black;
-  font-size: 14px; /* Smaller font size */
-  margin-bottom: 12px; /* Reduced margin */
+  font-size: 18px; /* Increased to match applicant report */
+  margin-bottom: 18px; /* Increased to match applicant report */
 }
 
 /* Dropdown */
 .recruiter-select-container {
-  margin-bottom: 18px; /* Reduced margin */
+  margin-bottom: 25px; /* Increased to match applicant report */
 }
 
 #recruiter-select {
-  padding: 5px; /* Reduced padding */
-  font-size: 12px; /* Smaller font size */
-  border: 1px solid #ced4da; /* Lighter border for consistency */
-  border-radius: 4px; /* Consistent border-radius */
+  padding: 8px; /* Increased to match applicant report */
+  font-size: 16px; /* Increased to match applicant report */
+  border: 1px solid #ced4da;
+  border-radius: 6px; /* Increased to match applicant report */
   width: 100%;
-  background-color: #f9fbfd; /* Lighter background */
+  background-color: #f9fbfd;
   color: black;
   cursor: pointer;
 }
@@ -38,85 +38,101 @@
 .recruiter-details {
   text-align: left;
   background: white;
-  padding: 12px; /* Reduced padding */
-  border-radius: 6px; /* Slightly reduced border-radius */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* More consistent shadow */
+  padding: 18px; /* Increased to match applicant report */
+  border-radius: 8px; /* Increased to match applicant report */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1); /* Increased to match applicant report */
 }
 
 .recruiter-details h3 {
   color: black;
-  font-size: 12px; /* Smaller font size */
+  font-size: 16px; /* Increased to match applicant report */
   margin-top: 0;
-  margin-bottom: 10px; /* Added for spacing */
+  margin-bottom: 16px; /* Increased to match applicant report */
 }
 
 /* Details display */
 .recruiter-details p {
-  margin: 6px 0; /* Reduced margin */
-  font-size: 12px; /* Smaller font size */
+  margin: 8px 0; /* Increased to be more readable */
+  font-size: 18px; /* Increased font size */
   color: black;
 }
 
 /* Details textarea */
 .details-textarea {
-  width: 100%; /* Full width */
-  padding: 8px; /* Reduced padding */
-  font-size: 12px; /* Smaller font size */
-  border: 1px solid #ced4da; /* Light border color */
-  border-radius: 4px; /* Consistent border-radius */
-  background-color: #f9fbfd; /* Light background for readonly */
-  color: black; /* Text color */
-  resize: none; /* Disable resizing */
-  box-sizing: border-box; /* Ensures padding and border are included in the width */
-  min-height: 160px; /* Slightly reduced height */
-  font-family: Arial, sans-serif; /* Consistent font */
-  line-height: 1.4; /* Slightly reduced line spacing */
+  width: 100%;
+  padding: 10px; /* Increased padding */
+  font-size: 18px; /* Increased font size */
+  border: 1px solid #ced4da;
+  border-radius: 6px; /* Increased to match applicant report */
+  background-color: #f9fbfd;
+  color: black;
+  resize: none;
+  box-sizing: border-box;
+  min-height: 180px; /* Slightly increased height */
+  font-family: Arial, sans-serif;
+  line-height: 1.6; /* Increased line spacing */
 }
 
 /* When using grid layout instead of textarea */
 .details-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 6px; /* Reduced gap */
+  gap: 8px; /* Increased gap */
 }
 
 .detail-item {
-  display: flex;
-  align-items: baseline;
-  font-size: 12px; /* Smaller font size */
-  line-height: 1.4; /* Reduced line height */
+  display: block; /* Changed to block like applicant report */
+  font-size: 18px; /* Increased font size */
+  margin-bottom: 6px; /* Match applicant report */
+  line-height: 1.6; /* Increased line height */
 }
 
 .detail-label {
   font-weight: bold;
-  min-width: 90px; /* Reduced width for labels */
+  display: inline; /* Changed to inline like applicant report */
+  margin-right: 0;
   color: black;
+  font-size: 18px; /* Increased font size */
 }
 
 .detail-value {
-  flex: 1;
+  display: inline; /* Changed to inline like applicant report */
+  margin-left: 0;
   color: black;
+  font-size: 18px; /* Increased font size */
 }
 
 /* Email link styling */
 .detail-value a {
   color: #0066cc;
   text-decoration: none;
+  font-size: 18px; /* Increased font size */
 }
 
 .detail-value a:hover {
   text-decoration: underline;
 }
 
+/* Readonly inputs when present */
+input[readonly], 
+textarea[readonly],
+select[disabled] {
+  font-size: 18px; /* Increased font size for readonly elements */
+  background-color: #f9fbfd;
+  color: black;
+  border: 1px solid #ced4da;
+  padding: 8px;
+}
+
 /* Loading and error states */
 .loading-details,
 .select-prompt,
 .error {
-  margin: 15px 0;
-  padding: 10px;
-  font-size: 12px;
+  margin: 20px 0; /* Increased margin */
+  padding: 15px; /* Increased padding */
+  font-size: 16px; /* Increased font size */
   background-color: #f9fbfd;
-  border-radius: 4px;
+  border-radius: 6px; /* Increased border radius */
 }
 
 .error {
@@ -126,14 +142,14 @@
 }
 
 .retry-button {
-  margin-top: 10px;
-  padding: 5px 12px;
+  margin-top: 15px; /* Increased margin */
+  padding: 8px 16px; /* Increased padding */
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 3px;
+  border-radius: 4px; /* Increased border radius */
   cursor: pointer;
-  font-size: 12px;
+  font-size: 16px; /* Increased font size */
 }
 
 .retry-button:hover {
@@ -144,14 +160,24 @@
 @media (max-width: 768px) {
   .recruiter-report-container {
     width: 90%;
-    padding: 12px; /* Reduced padding */
+    padding: 18px; /* Increased padding */
   }
   
-  .details-textarea {
-    font-size: 11px; /* Even smaller font on mobile */
+  .detail-item {
+    font-size: 16px; /* Slightly reduced for mobile but still larger than before */
+  }
+  
+  .detail-label,
+  .detail-value,
+  .detail-value a,
+  .details-textarea,
+  input[readonly],
+  textarea[readonly],
+  select[disabled] {
+    font-size: 16px; /* Slightly reduced for mobile but still larger than before */
   }
   
   .detail-label {
-    min-width: 80px; /* Smaller width on mobile */
+    min-width: auto; /* Remove fixed width on mobile */
   }
 }

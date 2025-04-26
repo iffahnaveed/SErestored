@@ -23,7 +23,8 @@ const {
   sendMessage,
   getMessagesByHR,
   getMessagesByApplicant,
-  getAllJobs
+  getAllJobs,
+  findAdminByEmail
 } = require('../models/Users');
 
 const handleError = (res, error, defaultMessage = 'Server error') => {
@@ -50,6 +51,43 @@ router.post('/signup', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
+
+
+
+// POST /adminlogin
+router.post('/adminlogin', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    // 1. Find admin by email
+    const admin = await findAdminByEmail(email);
+
+    // 2. Check if admin exists
+    if (!admin) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    // 3. Direct string comparison of passwords
+    if (admin.password !== password) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    // 4. Return success response with admin data
+    res.json({
+      success: true,
+      admin: {
+        admin_id: admin.admin_id,
+        email: admin.email
+      }
+    });
+
+  } catch (err) {
+    console.error('Admin login error:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
@@ -91,6 +129,7 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 });
+
 
 //// Get all contracts
 router.get('/all', async (req, res) => {
@@ -477,4 +516,3 @@ router.get('/jobs', async (_req, res) => {
 });
 
 
-module.exports = router;

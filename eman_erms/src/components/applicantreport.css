@@ -50,12 +50,10 @@
   margin-bottom: 16px;
 }
 
-
-
 /* Style each detail item to match HR report */
 .detail-item {
   display: block;
-  font-size: 16px;
+  font-size: 18px; /* Increased font size */
   margin-bottom: 6px;
   line-height: 1.6;
 }
@@ -65,22 +63,36 @@
   font-weight: bold;
   display: inline;
   margin-right: 0;
+  font-size: 18px; /* Increased font size */
 }
 
 /* Make the value appear right after the label */
 .detail-value {
   display: inline;
   margin-left: 0;
+  font-size: 18px; /* Increased font size */
 }
 
 /* Add color to email links */
 .detail-value a {
   color: #0066cc;
   text-decoration: none;
+  font-size: 18px; /* Increased font size */
 }
 
 .detail-value a:hover {
   text-decoration: underline;
+}
+
+/* Readonly inputs when present */
+input[readonly], 
+textarea[readonly],
+select[disabled] {
+  font-size: 18px; /* Increased font size for readonly elements */
+  background-color: #f9fbfd;
+  color: black;
+  border: 1px solid #ced4da;
+  padding: 8px;
 }
 
 /* Loading and error states */
@@ -122,6 +134,15 @@
   }
   
   .detail-item {
-    font-size: 14px;
+    font-size: 16px; /* Slightly reduced for mobile but still larger than before */
+  }
+  
+  .detail-label,
+  .detail-value,
+  .detail-value a,
+  input[readonly],
+  textarea[readonly],
+  select[disabled] {
+    font-size: 16px; /* Slightly reduced for mobile but still larger than before */
   }
 }

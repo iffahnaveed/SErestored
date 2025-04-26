@@ -11,6 +11,7 @@ import AdminMenuPage from "./components/adminmenu";
 import HRReportPage from "./components/hrreport";
 import  ApplicantReportPage from "./components/applicantreport";
 import  RecruiterReportPage from "./components/recruiterreport";
+import  AdminLoginPage from "./components/loginadmin";
 function App() {
   return (
     <Router>
@@ -26,6 +27,7 @@ function App() {
         <Route path="/hrreport" element={<HRReportPage />} />
         <Route path="/applicantreport" element={< ApplicantReportPage />} />
         <Route path="/recruiterreport" element={< RecruiterReportPage />} />
+        <Route path="/loginadmin" element={< AdminLoginPage />} />
       </Routes>
     </Router>
   );
