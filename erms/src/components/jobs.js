@@ -140,49 +140,62 @@ function Jobs() {
     }
   }, []);
 
-  // Apply for a job
-  const applyForJob = async (job) => {
-    if (!user) {
-      setError("Please log in to apply for jobs.");
-      return;
+
+const applyForJob = async (job) => {
+  const errors = [];
+  if (!user) {
+    setError("Please log in to apply for jobs.");
+    return;
+  }else{
+    const today = new Date();
+    const deadline = new Date(job.application_deadline);
+
+    if (today > deadline) {
+      errors.push("The application deadline for this job has passed.");
     }
 
     if (user.experience < job.job_experience) {
-      setError("You do not meet the experience requirement for this job.");
-      return;
+      errors.push("You do not meet the experience requirement for this job.");
     }
-    
-  if (user.cgpa < job.required_cgpa) {
-    setError("Your CGPA does not meet the minimum requirement for this job.");
+
+    if (user.cgpa < job.required_cgpa) {
+      errors.push("Your CGPA does not meet the minimum requirement for this job.");
+    }
+  }
+
+  if (errors.length > 0) {
+    console.error("Job application errors:", errors); 
+    setError(errors.join(" | ")); 
     return;
   }
 
-    try {
-      const response = await fetch('http://localhost:5000/api/jobs/apply', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-     // body: JSON.stringify({ user_id: user.id, job_id: job.jobid }),
+
+
+  try {
+    const response = await fetch('http://localhost:5000/api/jobs/apply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ user_id: user.applicant_id, job_id: job.jobid }),
+    });
 
-      });
-
-      const result = await response.json();
-      if (response.ok) {
-        setJobs(prevJobs => prevJobs.filter(j => j.jobid !== job.jobid)); // Remove applied job
-        setError(""); // Clear error
-      } else {
-        setError(result.message);
-      }
-    } catch (error) {
-      console.error("Error applying for job:", error);
-      setError("Server error. Try again later.");
+    const result = await response.json();
+    if (response.ok) {
+      setError(""); // Clear previous errors
+      alert("Job application successful!"); // Show success message
+    } else {
+      setError(result.message);
     }
-  };
+  } catch (error) {
+    console.error("Error applying for job:", error);
+    setError("Server error. Try again later.");
+  }
+};
 
   return (
     <div className="jobs-container">
       <h2>Available Jobs</h2>
       {error && <div className="error">{error}</div>}
+      <div className="table-wrapper">
       <table>
         <thead>
           <tr>
@@ -211,6 +224,7 @@ function Jobs() {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

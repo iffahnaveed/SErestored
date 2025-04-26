@@ -1,0 +1,39 @@
+{
+    "tableName": "applicant",
+    "columns": {
+      "applicant_id": {
+        "type": "integer",
+        "primaryKey": true,
+        "autoIncrement": true
+      },
+      "username": {
+        "type": "string",
+        "maxLength": 100,
+        "required": true
+      },
+      "email": {
+        "type": "string",
+        "maxLength": 100,
+        "required": true
+      },
+      "password": {
+        "type": "string",
+        "maxLength": 100,
+        "required": true
+      },
+      "age": {
+        "type": "integer",
+        "required": true
+      },
+      "gender": {
+        "type": "string",
+        "maxLength": 10,
+        "required": true
+      },
+      "experience": {
+        "type": "integer",
+        "required": true
+      }
+    }
+  }
+  
