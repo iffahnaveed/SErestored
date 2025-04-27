@@ -11,9 +11,31 @@ function AdminLoginPage() {
 
   const navigate = useNavigate();
 
+  // Email validation regex (basic)
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  // Handle login
   const handleLogin = async () => {
     setStatus({ loading: true, error: '', success: '' });
-  
+
+    // Validation: Check if the email is valid
+    if (!email || !emailRegex.test(email)) {
+      setStatus({ loading: false, error: 'Please enter a valid email address.', success: '' });
+      return;
+    }
+
+    // Validation: Check if the password is entered
+    if (!password) {
+      setStatus({ loading: false, error: 'Password cannot be empty.', success: '' });
+      return;
+    }
+
+    // Optional: Validate password length (if needed)
+    if (password.length < 6) {
+      setStatus({ loading: false, error: 'Password must be at least 6 characters long.', success: '' });
+      return;
+    }
+
     try {
       const result = await loginadmin({ email, password });
       
@@ -42,6 +64,7 @@ function AdminLoginPage() {
     }
   };
 
+  // Handle Enter key press to trigger login
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       handleLogin();

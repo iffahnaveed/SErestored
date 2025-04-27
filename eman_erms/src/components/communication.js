@@ -11,9 +11,8 @@ function CommunicationPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [sendStatus, setSendStatus] = useState({ type: null, message: "" });
-  
+
   // Get the HR ID from localStorage or sessionStorage
-  // This assumes you store the HR's ID when they log in
   const hr_id = localStorage.getItem('hr_id') || sessionStorage.getItem('hr_id') || 1;
 
   // Fetch applicants from your database
@@ -38,8 +37,20 @@ function CommunicationPage() {
   // Handle sending the message
   const handleSendMessage = async () => {
     setSendStatus({ type: null, message: "" });
-    if (!selectedApplicant || !message.trim()) {
-      setSendStatus({ type: "error", message: "Please select an applicant and type a message." });
+
+    // Validation for applicant selection and message content
+    if (!selectedApplicant) {
+      setSendStatus({ type: "error", message: "Please select an applicant." });
+      return;
+    }
+
+    if (!message.trim()) {
+      setSendStatus({ type: "error", message: "Please type a message." });
+      return;
+    }
+
+    if (message.length < 5) {
+      setSendStatus({ type: "error", message: "Message must be at least 5 characters long." });
       return;
     }
 

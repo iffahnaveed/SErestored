@@ -72,6 +72,28 @@ function ContractPage() {
       return;
     }
 
+    // Additional validation checks
+    if (parseFloat(formData.salary) <= 0) {
+      alert("Salary must be a positive number.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (parseInt(formData.probation_period) <= 0) {
+      alert("Probation period must be a positive number.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    const startDate = new Date(formData.start_date);
+    const endDate = new Date(formData.end_date);
+
+    if (startDate >= endDate) {
+      alert("Contract start date must be before the end date.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const res = await createContract(formData);
       const contractData = res.data?.contract || {

@@ -11,9 +11,34 @@ function LoginPage() {
 
   const navigate = useNavigate();
 
+  // Validate email format
+  const isValidEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
+  // Validate password requirements
+  const isValidPassword = (password) => {
+    return password.length >= 6;
+  };
+
   const handleLogin = async () => {
+    // Reset status
+    setStatus({ loading: false, error: '', success: '' });
+
+    // Input validation checks
     if (!email || !password) {
       setStatus({ loading: false, error: 'Please enter both email and password', success: '' });
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      setStatus({ loading: false, error: 'Please enter a valid email address', success: '' });
+      return;
+    }
+
+    if (!isValidPassword(password)) {
+      setStatus({ loading: false, error: 'Password must be at least 8 characters long', success: '' });
       return;
     }
 
@@ -22,32 +47,57 @@ function LoginPage() {
     try {
       const response = await login({ email, password });
 
-      if (!response || !response.user) {
-        const errorMsg = response?.message || 'Login failed. Please check your credentials.';
+      // Response validation checks
+      if (!response) {
+        setStatus({ loading: false, error: 'No response received from server', success: '' });
+        return;
+      }
+
+      if (response.error) {
+        setStatus({ loading: false, error: response.error, success: '' });
+        return;
+      }
+
+      if (!response.user) {
+        const errorMsg = response?.message || 'Login failed. Invalid user data received.';
         setStatus({ loading: false, error: errorMsg, success: '' });
         return;
       }
 
-      if (response.user.hr_id === undefined) {
-        console.warn('HR ID missing from user data');
+      // User data validation checks
+      if (!response.user.hr_id) {
+        console.warn('HR ID missing from user data - using fallback value');
+        response.user.hr_id = 'temp_hr_id'; // Fallback value
       }
-      const { hr_id } = response.user;
 
-if (!hr_id) {
-  console.warn('⚠️ HR ID is missing in response.user');
-} else {
-  localStorage.setItem('hr_id', hr_id); // ✅ Now it's saved!
-  console.log("✅ HR ID saved to localStorage:", hr_id);
-}
-      localStorage.setItem('user', JSON.stringify(response.user));
+      try {
+        localStorage.setItem('hr_id', response.user.hr_id);
+        localStorage.setItem('user', JSON.stringify(response.user));
+        console.log("User data saved to localStorage:", response.user);
+      } catch (storageError) {
+        console.error('LocalStorage error:', storageError);
+        setStatus({ loading: false, error: 'Failed to save session data', success: '' });
+        return;
+      }
 
       setStatus({ loading: false, error: '', success: 'Login successful!' });
       console.log("Login response user object:", response.user);
 
-      setTimeout(() => navigate('/hrmenu'), 1500);
+      // Navigation with fallback
+      setTimeout(() => {
+        try {
+          navigate('/hrmenu');
+        } catch (navigationError) {
+          console.error('Navigation error:', navigationError);
+          window.location.href = '/hrmenu'; // Fallback navigation
+        }
+      }, 1500);
     } catch (error) {
       console.error('Login error:', error);
-      setStatus({ loading: false, error: 'An error occurred during login. Please try again.', success: '' });
+      const errorMsg = error.response?.data?.message || 
+                      error.message || 
+                      'An error occurred during login. Please try again.';
+      setStatus({ loading: false, error: errorMsg, success: '' });
     }
   };
 
@@ -68,6 +118,7 @@ if (!hr_id) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           onKeyPress={handleKeyPress}
+          aria-label="Email input"
         />
 
         <input
@@ -76,14 +127,28 @@ if (!hr_id) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           onKeyPress={handleKeyPress}
+          aria-label="Password input"
+          minLength="8"
         />
 
-        <button onClick={handleLogin} disabled={status.loading}>
+        <button 
+          onClick={handleLogin} 
+          disabled={status.loading}
+          aria-busy={status.loading}
+        >
           {status.loading ? 'Logging in...' : 'Login'}
         </button>
 
-        {status.error && <p className="error-message">{status.error}</p>}
-        {status.success && <p className="success-message">{status.success}</p>}
+        {status.error && (
+          <p className="error-message" role="alert">
+            {status.error}
+          </p>
+        )}
+        {status.success && (
+          <p className="success-message" role="status">
+            {status.success}
+          </p>
+        )}
 
         <p>
           Don't have an account? <Link to="/signup">Sign Up</Link>
