@@ -1,0 +1,99 @@
+/* Container for the form */
+.form-container {
+  max-width: 450px;
+  margin: auto;
+  padding: 20px;
+  background: #ffffff;  /* Slightly lighter background */
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Group of form elements (like labels, inputs, etc.) */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Label styling for better readability */
+label {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 8px;  /* Space between label and input */
+  display: block;  /* Ensure the label is on its own line */
+}
+
+/* Styling for form inputs, selects, and textareas */
+select, input, textarea {
+  width: 100%;
+  padding: 12px;  /* More padding for a comfortable experience */
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fafafa;  /* Light background for form elements */
+  transition: all 0.3s ease;
+}
+
+/* Focused state of inputs, select, and textareas */
+select:focus, input:focus, textarea:focus {
+  border-color: #4e89c6;  /* Blue border on focus */
+  outline: none;
+  background-color: #fff;  /* White background when focused */
+}
+
+/* Button styling */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4e89c6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 16px;  /* Space above button */
+}
+
+button:hover {
+  background-color: #3578b7;  /* Slightly darker blue on hover */
+}
+
+button:active {
+  background-color: #2c6b98;  /* Darker shade when clicked */
+}
+
+/* Textarea specific styles */
+textarea {
+  resize: vertical;  /* Allow the textarea to be resized vertically */
+  height: 150px;  /* Default height */
+}
+
+/* Styling for the form messages or errors */
+.status-message {
+  padding: 12px;
+  background-color: #e9f7ee;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #2c6b2f;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Responsiveness: Make the form look great on small screens */
+@media (max-width: 500px) {
+  .form-container {
+    padding: 12px;
+    max-width: 100%;  /* Allow the form to occupy full width on smaller screens */
+  }
+
+  label {
+    font-size: 14px;  /* Slightly smaller text on mobile */
+  }
+
+  button {
+    padding: 10px;  /* Smaller button padding on mobile */
+    font-size: 14px;
+  }
+}

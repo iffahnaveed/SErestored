@@ -1,0 +1,65 @@
+.admin-menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Center the items horizontally */
+  justify-content: center;  /* Center the items vertically */
+  max-width: 600px; /* Restrict max-width */
+  width: 100%; /* Ensure it spans full width while maintaining max-width */
+  margin: 0 auto; /* Center the container */
+  padding: 40px 20px; /* Added padding for better spacing */
+  font-family: Arial, sans-serif;
+  text-align: center;
+  height: -100vh; /* Full viewport height */
+}
+
+.admin-menu-container h2 {
+  color: black;
+  font-size: 24px; /* Larger font for the heading */
+  margin-bottom: 30px; /* Ensure some space below the heading */
+  width: 100%; /* Make heading span full width */
+  padding-right: 50px;
+}
+
+.admin-menu-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%; /* Ensure the options container spans full width */
+  max-width: 400px; /* Restrict the width of the options container */
+}
+
+.admin-menu-option {
+  display: block;
+  background-color: #6c8fb4;
+  color: black;
+  text-decoration: none;
+  padding: 15px 30px; /* Increased padding for a better look */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Slightly larger text */
+  transition: background-color 0.3s ease;
+  width: 100%; /* Ensure all buttons are the same width */
+  max-width: 300px; /* Restrict maximum width for buttons */
+  text-align: center; /* Center the text inside the button */
+}
+
+.admin-menu-option:hover {
+  background-color: #728fad;
+}
+
+.admin-back-button {
+  background-color: #6c8fb4;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  width: 100%; /* Ensure back button matches button width */
+  max-width: 300px; /* Restrict maximum width of the back button */
+  text-align: center;
+}
+
+.admin-back-button:hover {
+  background-color: #7d94ad;
+}

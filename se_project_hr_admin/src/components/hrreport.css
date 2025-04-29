@@ -1,0 +1,159 @@
+/* Container styling */
+.hr-report-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 25px;
+  background: linear-gradient(to top, #c6ebfa, #859aaf);
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: black;
+  font-family: Arial, sans-serif;
+}
+
+/* Heading */
+.hr-report-container h2 {
+  color: black;
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+/* Dropdown */
+.hr-select-container {
+  margin-bottom: 25px;
+}
+
+.hr-select-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+#hr-select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  width: 100%;
+  background-color: #f9fbfd;
+  color: black;
+  cursor: pointer;
+}
+
+/* Report section */
+.hr-details {
+  text-align: left;
+  background: white;
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hr-details h3 {
+  color: black;
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+/* Style each detail row to match applicant report */
+.detail-row {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+/* Make the label and value display inline on the same line */
+.detail-label {
+  font-weight: bold;
+  display: inline;
+  margin-right: 0;
+  font-size: 18px;
+}
+
+/* Make the value appear right after the label */
+.detail-value {
+  display: inline;
+  margin-left: 0;
+  font-size: 18px;
+}
+
+/* Add color to email links */
+.detail-value a {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.detail-value a:hover {
+  text-decoration: underline;
+}
+
+/* Readonly inputs when present */
+input[readonly], 
+textarea[readonly],
+select[disabled] {
+  width: 100%;
+  padding: 8px;
+  font-size: 18px;
+  background-color: #f9fbfd;
+  color: black;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  resize: none;
+  box-sizing: border-box;
+}
+
+/* Loading and error states */
+.loading-details, 
+.select-prompt,
+.error {
+  margin: 20px 0;
+  padding: 15px;
+  font-size: 16px;
+  background-color: #f9fbfd;
+  border-radius: 6px;
+}
+
+.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.retry-button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.retry-button:hover {
+  background-color: #0069d9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hr-report-container {
+    width: 90%;
+    padding: 18px;
+  }
+  
+  .detail-row {
+    font-size: 16px;
+  }
+  
+  .detail-label,
+  .detail-value,
+  .detail-value a,
+  input[readonly],
+  textarea[readonly],
+  select[disabled] {
+    font-size: 16px;
+  }
+}

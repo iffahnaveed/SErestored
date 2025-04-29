@@ -1,0 +1,148 @@
+/* Container styling */
+.applicant-report-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 25px;
+  background: linear-gradient(to top, #c6ebfa, #859aaf);
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: black;
+  font-family: Arial, sans-serif;
+}
+
+/* Heading */
+.applicant-report-container h2 {
+  color: black;
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+/* Dropdown */
+.applicant-select-container {
+  margin-bottom: 25px;
+}
+
+#applicant-select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  width: 100%;
+  background-color: #f9fbfd;
+  color: black;
+  cursor: pointer;
+}
+
+/* Report section */
+.applicant-details {
+  text-align: left;
+  background: white;
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.applicant-details h3 {
+  color: black;
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+/* Style each detail item to match HR report */
+.detail-item {
+  display: block;
+  font-size: 18px; /* Increased font size */
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+/* Make the label and value display inline on the same line */
+.detail-label {
+  font-weight: bold;
+  display: inline;
+  margin-right: 0;
+  font-size: 18px; /* Increased font size */
+}
+
+/* Make the value appear right after the label */
+.detail-value {
+  display: inline;
+  margin-left: 0;
+  font-size: 18px; /* Increased font size */
+}
+
+/* Add color to email links */
+.detail-value a {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 18px; /* Increased font size */
+}
+
+.detail-value a:hover {
+  text-decoration: underline;
+}
+
+/* Readonly inputs when present */
+input[readonly], 
+textarea[readonly],
+select[disabled] {
+  font-size: 18px; /* Increased font size for readonly elements */
+  background-color: #f9fbfd;
+  color: black;
+  border: 1px solid #ced4da;
+  padding: 8px;
+}
+
+/* Loading and error states */
+.loading-details, 
+.select-prompt,
+.error {
+  margin: 20px 0;
+  padding: 15px;
+  font-size: 16px;
+  background-color: #f9fbfd;
+  border-radius: 6px;
+}
+
+.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.retry-button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.retry-button:hover {
+  background-color: #0069d9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .applicant-report-container {
+    width: 90%;
+    padding: 18px;
+  }
+  
+  .detail-item {
+    font-size: 16px; /* Slightly reduced for mobile but still larger than before */
+  }
+  
+  .detail-label,
+  .detail-value,
+  .detail-value a,
+  input[readonly],
+  textarea[readonly],
+  select[disabled] {
+    font-size: 16px; /* Slightly reduced for mobile but still larger than before */
+  }
+}
